@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>pi · Trajectory</title>
+	<link rel="stylesheet" href="/viewer.css">
+	<script type="module" src="/viewer.js"></script>
+</head>
+<body>
+	<header class="app-header">
+		<div class="brand"><span class="brand-mark" aria-hidden="true">π</span><div><strong>Trajectory</strong><small>LOCAL SESSION EXPLORER</small></div></div>
+		<div class="header-actions"><span id="status" role="status">Connecting…</span><button id="live" type="button" aria-pressed="true">Pause live</button><button id="stop" class="danger" type="button">Stop server</button></div>
+	</header>
+	<div class="layout">
+		<aside aria-label="Session catalogue">
+			<div class="aside-header"><h2>Sessions <span id="session-count" class="count">0</span></h2><label class="search"><span class="sr-only">Search sessions</span><input id="session-search" type="search" placeholder="Find a session or workspace…"></label></div>
+			<div id="catalog-issues" class="catalog-issues"></div>
+			<nav id="sessions" aria-label="Choose a session"></nav>
+			<footer>Read-only · No provider calls<br>Code and prompts are not redacted.</footer>
+		</aside>
+		<main id="main">
+			<section class="session-header"><span class="eyebrow">EXECUTION HISTORY</span><h1 id="title">Explore your agent’s work</h1><p id="workspace" class="workspace">Choose a session to inspect its JSONL trajectory.</p><div id="metrics" class="metrics"></div><div id="relations" class="relations"></div></section>
+			<section class="toolbar" aria-label="Trajectory filters">
+				<label class="search trajectory-search"><span class="sr-only">Search trajectory</span><input id="search" type="search" placeholder="Search prompts, thinking, arguments, outputs…"></label>
+				<label><span class="sr-only">Entry type</span><select id="kind"><option value="all">All records</option><option value="user">User</option><option value="assistant">Assistant</option><option value="thinking">Thinking</option><option value="toolCall">Tool calls</option><option value="toolResult">Tool results</option><option value="system">System prompts</option><option value="events">Events &amp; usage</option></select></label>
+				<label><span class="sr-only">Tool name</span><select id="tool"><option value="">All tools</option></select></label>
+				<label><span class="sr-only">Branch</span><select id="branch"><option value="latest">Latest branch</option><option value="all">All stored records</option></select></label>
+				<label class="check"><input id="errors" type="checkbox"> Errors only</label>
+			</section>
+			<div class="timeline-caption"><span id="result-count">No session selected</span><button id="collapse" type="button">Collapse all</button></div>
+			<div id="issues" class="issues"></div>
+			<section id="timeline" class="timeline" aria-label="Session trajectory"><div class="empty"><span class="empty-icon" aria-hidden="true">◎</span><h2>Every step, in one place.</h2><p>Follow prompts, model responses and tool results.<br>Compaction markers stay visible; history is not model context.</p></div></section>
+			<button id="more" type="button" hidden>Show more records</button>
+		</main>
+	</div>
+</body>
+</html>

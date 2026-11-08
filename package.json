@@ -1,0 +1,48 @@
+{
+	"name": "@thinkrail/pi-trajectory",
+	"version": "0.0.0",
+	"description": "A local, read-only browser viewer for pi JSONL session trajectories.",
+	"license": "MIT",
+	"type": "module",
+	"keywords": [
+		"pi-package",
+		"pi",
+		"trajectory",
+		"session",
+		"jsonl"
+	],
+	"files": [
+		"index.ts",
+		"src/*",
+		"!src/*.test.ts",
+		"README.md",
+		"LICENSE"
+	],
+	"exports": {
+		".": "./index.ts",
+		"./index.ts": "./index.ts",
+		"./package.json": "./package.json"
+	},
+	"pi": {
+		"extensions": [
+			"./index.ts"
+		]
+	},
+	"scripts": {
+		"typecheck": "tsc --noEmit",
+		"test": "bun test",
+		"test:browser": "bun browser.smoke.ts",
+		"test:node": "node node.smoke.mjs"
+	},
+	"peerDependencies": {
+		"@earendil-works/pi-coding-agent": "*",
+		"typebox": "*"
+	},
+	"devDependencies": {
+		"@playwright/test": "1.61.0",
+		"@earendil-works/pi-coding-agent": "1.5.0",
+		"typebox": "1.3.27",
+		"@types/bun": "1.4.4",
+		"typescript": "6.0.3"
+	}
+}
